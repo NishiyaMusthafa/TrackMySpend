@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 
-const API = "http://localhost:5000/api/expenses";
+const API = "https://trackmyspend-backend-quhf.onrender.com/api/expenses";
 const emptyForm = { title: "", amount: "", category: "Food", date: new Date().toISOString().slice(0, 10) };
 
 function App() {
