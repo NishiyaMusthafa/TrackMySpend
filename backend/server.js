@@ -16,9 +16,15 @@ mongoose.connect(process.env.MONGO_URI)
 
 app.get("/api/expenses", async (req, res) => {
   try {
-    res.json(await Expense.find().sort({ date: -1 }));
+    const expenses = await Expense.find().sort({ date: -1 });
+    res.json(expenses);
   } catch (err) {
-    res.status(500).json({ message: "Failed to fetch expenses" });
+    console.error("Fetch expenses error:", err);
+
+    res.status(500).json({
+      message: "Failed to fetch expenses",
+      error: err.message
+    });
   }
 });
 
